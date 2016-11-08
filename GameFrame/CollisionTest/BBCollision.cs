@@ -13,7 +13,7 @@ namespace GameFrame.CollisionTest
 
         public int Height { get; set; }
         public int Width { get; set; }
-        
+
         public BBCollision(List<BBObject> _list, int width, int height)
         {
             _bbObjects = _list;
@@ -67,38 +67,29 @@ namespace GameFrame.CollisionTest
                 if (_bbObjects[i].Position.Y < 0)
                 {
                     _collisionType = "Top";
-                    //_velocity.Y *= -1;
                     _collisionSubject.SetCollisionType(_collisionType);
-                    //_collisionSubject.SetVelocity(_velocity);
                 }
 
                 else if (_bbObjects[i].Position.Y > Height - _bbObjects[i].BoundingBox.Height)
                 {
                     _collisionType = "Bottom";
-                    //_velocity.Y *= -1;
                     _collisionSubject.SetCollisionType(_collisionType);
-                    //_collisionSubject.SetVelocity(_velocity);
                 }
 
                 else if (_bbObjects[i].Position.X < 0)
                 {
                     _collisionType = "Left";
-                    //_velocity.X = _velocity.X * -1;
                     _collisionSubject.SetCollisionType(_collisionType);
-                    //_collisionSubject.SetVelocity(_velocity);
                 }
 
                 else if (_bbObjects[i].Position.X + _bbObjects[i].BoundingBox.Width > Width)
                 {
                     _collisionType = "Right";
-                    //_velocity.X = _velocity.X * -1;
                     _collisionSubject.SetCollisionType(_collisionType);
-                    //_collisionSubject.SetVelocity(_velocity);
                 }
             }
-           
-            
+
         }
-       
+
     }
 }

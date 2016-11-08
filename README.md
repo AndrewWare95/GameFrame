@@ -8,24 +8,29 @@ Install Monogame 3.5
 ### Completed design patterns;
 Adapter = William
 
-Bridge = Conor + Andrew
+Bridge = Conor
 
 Command = Conor
 
-State = William + Conor
+State = William
 
 Service Locator = William
 
 Factory = William
 
-Abstract Factory ???
-
 Observer = Andrew
 
-Prototype = Cathal
+Prototype = Andrew
+
+Decorator = Cathal
+
+Interceptor = Conor
 
 ###Todo
-Interceptor
+
+Documentaion
+
+Unit testing
 
 
 ####Other features
@@ -35,3 +40,5 @@ Delegation = Command
 Testing = William
 
 Distribution = Conor
+
+Continuos Integration = Conor
