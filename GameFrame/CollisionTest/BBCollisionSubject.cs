@@ -11,6 +11,7 @@ namespace GameFrame.CollisionTest
     {
 
         private List<IObserver> observers;
+        private Vector2 vel;
         private string collisionType;
 
         public BBCollisionSubject()
@@ -37,22 +38,12 @@ namespace GameFrame.CollisionTest
             }
         }
 
-        /*public void SetVelocity(Vector2 velocity)
-        {
-            this.vel = velocity;
-            NotifyObservers();
-        }*/
-
         public void SetCollisionType(string type)
         {
             this.collisionType = type;
             NotifyObservers();
         }
 
-        /*public Vector2 GetVelocity()
-        {
-            return vel;
-        }*/
 
         public string GetCollisionType()
         {

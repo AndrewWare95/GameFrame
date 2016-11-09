@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using Demos.Common;
 using Demos.Pong;
-using Demos.Puzzle;
 using Demos.Screens;
 using Demos.TopDownRpg;
 using GameFrame;
+using GameFrame.Ink;
+using GameFrame.Interceptor;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Screens;
@@ -17,6 +18,7 @@ namespace Demos
         private readonly GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private readonly ScreenComponent _screenComponent;
+        private TopDownRpgScene _rpgScene;
 
         public DemoGame()
         {
@@ -31,6 +33,7 @@ namespace Demos
             base.LoadContent();
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             var viewportAdapter = new BoxingViewportAdapter(Window, GraphicsDevice, ScreenSize.Width, ScreenSize.Height);
+            _rpgScene = new TopDownRpgScene(viewportAdapter, _spriteBatch);
             var screens = new List<Screen>
             {
                 new MainMenuScreen(viewportAdapter, Services, this),
@@ -40,8 +43,8 @@ namespace Demos
                 new VideoOptionsScreen(viewportAdapter, Services),
                 new KeyboardOptionsScreen(viewportAdapter, Services),
                 new MouseOptionsScreen(viewportAdapter, Services),
-                new TopDownRpgScene(viewportAdapter, _spriteBatch),
-                new PongScreen(viewportAdapter, _spriteBatch)
+                new PongScreen(viewportAdapter, _spriteBatch),
+                _rpgScene
             };
             foreach (var screen in screens)
             {

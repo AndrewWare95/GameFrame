@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Diagnostics;
 
@@ -26,15 +25,15 @@ namespace GameFrame.CollisionTest
 
         public BBObject(Texture2D texture, Vector2 position)
         {
-            this._texture = texture;
-            this.Position = position;
+            _texture = texture;
+            Position = position;
         }
 
         public BBObject(Texture2D texture, Vector2 position, Vector2 velocity)
         {
-            this._texture = texture;
-            this.Position = position;
-            this.Velocity = velocity;
+            _texture = texture;
+            Position = position;
+            Velocity = velocity;
         }
 
         public void Draw(SpriteBatch spriteBatch)

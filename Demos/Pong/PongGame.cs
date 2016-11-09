@@ -44,12 +44,12 @@ namespace Demos.Pong
             position = new Vector2(0, (350));
             PlayerOne = new BBObject(_paddleTexture, position);
 
-            position = new Vector2((800 - _paddleTexture.Width),(350 - _paddleTexture.Height) / 2);
+            position = new Vector2((800 - _paddleTexture.Width), (350 - _paddleTexture.Height) / 2);
             PlayerTwo = PlayerOne.Clone() as BBObject;
             PlayerTwo.Position = position;
 
-           
-            position = new Vector2(PlayerOne.BoundingBox.Right + 1,(350 - _ballTexture.Height) / 2);
+
+            position = new Vector2(PlayerOne.BoundingBox.Right + 1, (350 - _ballTexture.Height) / 2);
             Ball = new BBObject(_ballTexture, position, new Vector2(2.0f, 2.0f));
 
             _objList = new List<BBObject>();
@@ -57,15 +57,15 @@ namespace Demos.Pong
             _objList.Add(PlayerOne);
             _objList.Add(PlayerTwo);
 
-           
+
             _playerCollision = new BBCollision(_objList, ScreenSize.Width, ScreenSize.Height);
-        
+
             _collisionSubject = _playerCollision.GetBbCollisionSubject();
             _collisionSubject.SetCollisionType("");
             _playerCollision.CheckCollision();
-            
+
         }
- 
+
 
         private void SetInStartPostion()
         {
@@ -94,16 +94,16 @@ namespace Demos.Pong
 
             _keyboardState = Keyboard.GetState();
 
-            if (_keyboardState.IsKeyDown(Keys.W) && PlayerOne.BoundingBox.Y < 11)
+            if (_keyboardState.IsKeyDown(Keys.W) && PlayerOne.BoundingBox.Y > 11)
                 PlayerOne.Position.Y -= 10f;
 
-            if (_keyboardState.IsKeyDown(Keys.S) && PlayerOne.BoundingBox.Y > ScreenSize.Height - PlayerOne.BoundingBox.Height - 11)
+            if (_keyboardState.IsKeyDown(Keys.S) && PlayerOne.BoundingBox.Y < ScreenSize.Height - PlayerOne.BoundingBox.Height - 11)
                 PlayerOne.Position.Y += 10f;
 
-            if (_keyboardState.IsKeyDown(Keys.Up) && PlayerTwo.BoundingBox.Y < 11)
+            if (_keyboardState.IsKeyDown(Keys.Up) && PlayerTwo.BoundingBox.Y > 11)
                 PlayerTwo.Position.Y -= 10f;
 
-            if (_keyboardState.IsKeyDown(Keys.Down) && PlayerTwo.BoundingBox.Y > ScreenSize.Height - PlayerTwo.BoundingBox.Height - 11)
+            if (_keyboardState.IsKeyDown(Keys.Down) && PlayerTwo.BoundingBox.Y < ScreenSize.Height - PlayerTwo.BoundingBox.Height - 11)
                 PlayerTwo.Position.Y += 10f;
 
             _playerCollision.CheckCollision();
@@ -132,6 +132,11 @@ namespace Demos.Pong
             else if (_type.Contains("Bottom"))
             {
                 Ball.Velocity.Y *= -1;
+                _collisionSubject.SetCollisionType("");
+            }
+            else if (_type.Contains("Object"))
+            {
+                Ball.Velocity.X *= -1;
                 _collisionSubject.SetCollisionType("");
             }
         }
